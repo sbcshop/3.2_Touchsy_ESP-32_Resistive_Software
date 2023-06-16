@@ -140,11 +140,11 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     |GP3 | 5 | General IO / SPI0 TX / I2C1 SCL |
     |GP28 | 34 | General IO / ADC2 / SPI1 RX |
 
-### 1. Step to install boot Firmware
+### 1. Configure and Setup Development Environment
    - Every Touchsy board will be provided with boot firmware already installed, so you can directly go to step 2.
    - If, in any case, you are required to install firmware for your board, then you can follow the guide [here](https://github.com/sbcshop/EnkPi_7.5_Software/blob/main/Downloads/Pico%20W%20Micropython%20Firmware%20Installation%20Steps.pdf)
 
-### 2. Onboard LED Blink 
+### 2. Testing First Code
    - Download **Thonny IDE** from [Download link](https://thonny.org/) as per your OS and install it.
    - Once done start **Thonny IDE application**, Connect Touchsy with a laptop/PC using a micro USB cable and the micro USB port on Pico W present on Touchsy.
    - Select device at the bottom right with a suitable COM port, as shown in the below figure. You might get a different COM port.
@@ -155,16 +155,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
      
      Now that we've reached this point, you're executing your script through Thonny IDE, so if you unplug Pico, it will stop running. To run your script without using an IDE, simply power up Touchsy and it should run your script, go to step 3. Once you have transferred your code to the Touchsy board, to see your script running, just plug in power either way using micro USB or Type C, both will work.
 
-### 3. How to move your script on Pico W of Touchsy
-   - Click on File -> Save Copy -> select Raspberry Pi Pico , Then save file as main.py
-     
-      <img src="https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/images/transfer_script_pico.gif" />
-   
-   In similar way you can add various python code files to Pico. Also you can try out sample codes given here in [examples folder](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/tree/main/examples). But make sure you have all required library files inside Pico W of Touchsy, if not only then follow below steps otherwise skip.
-   - Mostly you will receive Touchsy with all required library files preinstalled. But in any case if you need to save library files from [lib](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/tree/main/lib) folder into Pico W of Touchsy, then download repo and follow below steps to move lib file into Pico of Touchsy.
-      <img src="https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/images/multiple_file_transfer.gif" />
-   
-**NOTE: Don't rename _lib_ files** and also you will have to move related font file if used inside code.
+
 
 
 ### Example Codes
@@ -182,9 +173,9 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
   * [Schematic](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Hardware/blob/main/Design%20Data/Sch%203.2%20Inch%20Touchsy%20based%20on%20ESp32(Resistive).pdf)
   * [Hardware Files](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Hardware)
   * [Step File](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Hardware/blob/main/Mechanical%20Data/Step%203.2%20Inch%20Touchsy%20based%20on%20ESp32(Resistive).step)
-  * [MicroPython getting started for RPi Pico/Pico W](https://docs.micropython.org/en/latest/rp2/quickref.html)
-  * [Pico W Getting Started](https://projects.raspberrypi.org/en/projects/get-started-pico-w)
-  * [RP2040 Datasheet](https://github.com/sbcshop/HackyPi-Hardware/blob/main/Documents/rp2040-datasheet.pdf)
+  * [Getting Started with ESP32 in Arduino](https://docs.espressif.com/projects/arduino-esp32/en/latest/)
+  * [ESP32 S3 Hardware Reference](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/index.html)
+  * [ESP32 S3 Datasheet](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Capacitive_Software/blob/main/documents/esp32-s3_datasheet_en.pdf)
 
 
 ## Related Products
