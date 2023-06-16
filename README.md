@@ -37,7 +37,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
 
 ## Getting Started with 3.2 Touchsy ESP-32 Resistive
 ### Pinout
-<img src="">
+<img src="https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/images/Touchsy%20ESP32%20Res%20pinout.jpg">
 
 - (1) 3.2” Resistive Touch Display 
 - (2) Extra GPIO breakout
