@@ -54,17 +54,17 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
 
 
 ### Interfacing Details
-- Display and Resistive Touch controller interfacing with Pico W
+- Display and Resistive Touch controller interfacing with ESP32
     | ESP32 | Display | Code variables | Function |
     |---|---|---|---|
-    |14 | DC/SCL SPI | TFT_CLK_PIN  |Clock pin of SPI interface for Display|
-    |13  | SDI SPI/SDA | TFT_MOSI_PIN | MOSI (Master OUT Slave IN) pin of SPI interface|
-    |15 | CS/SPI CS  | TFT_CS_PIN   | Chip Select pin of SPI interface|
-    |21 | WR/SPI D/C | TFT_DC_PIN   | Data/Command pin of SPI interface|
-    |EN | RESET | TFT_RST_PIN  | Display Reset pin, Directly connected to enable pin|
-    |5 |Driven via Transistor| BL |Backlight of display|
+    |IO14 | DC/SCL SPI | _sclk  |Clock pin of SPI interface for Display|
+    |IO13  | SDI SPI/SDA | _mosi | MOSI (Master OUT Slave IN) pin of SPI interface|
+    |IO15 | CS/SPI CS  | TFT_CS   | Chip Select pin of SPI interface|
+    |IO21 | WR/SPI D/C | TFT_DC   | Data/Command pin of SPI interface|
+    |EN | RESET | TFT_RST  | Display Reset pin, Directly connected to enable pin|
+    |IO5 |Driven via Transistor| TFT_BACKLIGHT_PIN |Backlight of display|
 
-  Display setting code snippets view (config.py):
+  Display setting code snippets view:
   ```
     //Define SPI interfacing pins for Display with ESP32
     #define TFT_DC             21
@@ -74,66 +74,58 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     #define TFT_CS             15 
     #define TFT_RST            -1   // connected to enable pin of esp32 
     #define TFT_BACKLIGHT_PIN   5
-      
-    // pass to function
-    Adafruit_ILI9341 tft = Adafruit_ILI9341( TFT_CS, TFT_DC, TFT_RST );
   ```
   
-    | Pico W | Resistive Touch | Code variables | Function |
+    | ESP32 | Resistive Touch | Code variables | Function |
     |---|---|---|---|
-    |GP2 | DCLK | XPT_CLK_PIN  |Clock pin of SPI interface for touch controller|
-    |GP3 | DIN | XPT_MOSI_PIN | MOSI (Master OUT Slave IN) data pin of SPI interface|
-    |GP4 | DOUT | XPT_MISO_PIN   | MISO (Master IN Slave OUT) data pin of SPI interface|
-    |GP5 | CS | XPT_CS_PIN   | Chip Select pin of SPI interface|
-    |GP10 | PENIRQ | XPT_INT | Touch controller Interrupt pin|
+    | | DCLK | XPT_CLK_PIN  |Clock pin of SPI interface for touch controller|
+    | | DIN | XPT_MOSI_PIN | MOSI (Master OUT Slave IN) data pin of SPI interface|
+    | | DOUT | XPT_MISO_PIN   | MISO (Master IN Slave OUT) data pin of SPI interface|
+    | IO47 | CS | TOUCH_CS_PIN   | Chip Select pin of SPI interface|
+    | IO0 | PENIRQ | TOUCH_IRQ_PIN | Touch controller Interrupt pin|
 
-  Touch setting code snippets view(config.py):
-  ```
-    XPT_CLK_PIN = const(2)
-    XPT_MOSI_PIN = const(3)
-    XPT_MISO_PIN = const(4)  
-    XPT_CS_PIN = const(5)
-    XPT_INT = const(10)
-
-    #inside createXPT(touch_handler) method to configure touch for SPI interface 
-    spiXPT = SPI(0, baudrate=1000000, sck=Pin(XPT_CLK_PIN), mosi=Pin(XPT_MOSI_PIN), miso=Pin(XPT_MISO_PIN))
-    xpt = Touch(spiXPT, cs=Pin(XPT_CS_PIN), int_pin=Pin(XPT_INT), int_handler=touch_handler)
+  Touch setting code snippets view:
   ```
 
-- Pico W and micro SD card interfacing
-    | Pico W | microSD Card | Function |
+  ```
+
+- ESP32 and micro SD card interfacing
+    | ESP32| microSD Card | Function |
     |---|---|---|
-    |GP18 | SCLK |Clock pin of SPI interface for microSD card |
-    |GP19 | DIN  | MOSI (Master OUT Slave IN) data pin of SPI interface|
-    |GP16 | DOUT | MISO (Master IN Slave OUT) data pin of SPI interface|
-    |GP17 | CS   | Chip Select pin of SPI interface|
+    |IO42 | SCLK |Clock pin of SPI interface for microSD card |
+    |IO2 | DIN  | MOSI (Master OUT Slave IN) data pin of SPI interface|
+    |IO41 | DOUT | MISO (Master IN Slave OUT) data pin of SPI interface|
+    |IO1 | CS   | Chip Select pin of SPI interface|
 
   Sdcard setting code snippets view:
   ```
-    spi=SPI(0,sck=Pin(18),mosi=Pin(19),miso=Pin(16))
-    sd=sdcard.SDCard(spi,Pin(17))
+   //Define SPI interfacing pins for micro SD card with ESP32
+    #define SD_MOSI 2
+    #define SD_MISO 41
+    #define SD_SCK 42
+    #define SD_CS 1
   ```
   
 - Buttons, Buzzer and LED Interfacing with Pico W
-    | Pico W | Buttons | Function |
+    | ESP32 | Buttons | Function |
     |---|---|---|
-    |GP9 | BT1 |Programmable button|
-    |GP26 | BT2 |Programmable button|
-    |GP27 | BT3 |Programmable button|
-    |GP8 | BT4 |Programmable button|
+    |IO4 | BT1 |Programmable button|
+    |IO6 | BT2 |Programmable button|
   
-    | Pico W | Hardware |
+    | ESP32 | Hardware |
     |---|---|
-    |GP22 | Buzzer |
-    |GP25 | LED (OnBoard Pico W) |
+    |IO40 | Buzzer |
+    |IO3 | LED |
 
   Code snippets:
   ``` 
-    buzzer = PWM(Pin(22)) #define PWM output
-    button1 = Pin(9, Pin.IN, Pin.PULL_UP) #define input pin with PULLUP
+    const int buzzerPin = 40; //create variable for buzzer pin connected at GPIO40
+    const int userButton1 = 4; //for programmable button 1 at GPIO4
+    const int userButton2 = 6; //for programmable button 1 at GPIO6
+    const int LED = 3;
   ```
 - Breakout GPIOs
-    | Pico W |Physical Pin | Multi-Function |
+    | ESP32 |Physical Pin | Multi-Function |
     |---|---|---|
     |GP0 | 1  | General IO / SPI0 RX / I2C0 SDA / UART0 TX |
     |GP1 | 2 | General IO / SPI0 CSn / I2C0 SCL / UART0 RX |
