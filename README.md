@@ -83,6 +83,13 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     | | DOUT | XPT_MISO_PIN   | MISO (Master IN Slave OUT) data pin of SPI interface|
     | IO47 | CS | TOUCH_CS_PIN   | Chip Select pin of SPI interface|
     | IO0 | PENIRQ | TOUCH_IRQ_PIN | Touch controller Interrupt pin|
+  
+#define TFT_MOSI 11
+#define TFT_SCLK 12
+#define TFT_CS   10  // Chip select control pin
+#define TFT_DC   13  // Data Command control pin
+//#define TFT_RST   4  // Reset pin (could connect to RST pin)
+#define TFT_RST  -1  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
   Touch setting code snippets view:
   ```
