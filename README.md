@@ -157,8 +157,9 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     |GND  | 1/40/41 | Ground pin |
 
 ### 1. Configure and Setup Development Environment
-   - Every Touchsy board will be provided with boot firmware already installed, so you can directly go to step 2.
-   - If, in any case, you are required to install firmware for your board, then you can follow the guide [here](https://github.com/sbcshop/EnkPi_7.5_Software/blob/main/Downloads/Pico%20W%20Micropython%20Firmware%20Installation%20Steps.pdf)
+   - Download Arduino IDE from [official site](https://www.arduino.cc/en/software) and install into your system. We have use Arduino IDE 1.8.19
+      <img src= "https://github.com/sbcshop/EnkPi_2.9_Software/blob/main/images/img2.jpg" />
+   - 
 
 ### 2. Testing First Code
    - Download **Thonny IDE** from [Download link](https://thonny.org/) as per your OS and install it.
