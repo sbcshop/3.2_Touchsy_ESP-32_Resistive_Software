@@ -134,6 +134,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     const int LED = 3;
   ```
 - Breakout GPIOs
+  
     Breakout 1
     | ESP32 |Physical Pin | Multi-Function |
     |---|---|---|
