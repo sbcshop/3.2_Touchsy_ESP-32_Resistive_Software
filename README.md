@@ -115,7 +115,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     #define SD_CS 1
   ```
   
-- Buttons, Buzzer and LED Interfacing with Pico W
+- Buttons, Buzzer and LED Interfacing with ESP32
     | ESP32 | Buttons | Function |
     |---|---|---|
     |IO4 | BT1 |Programmable button|
