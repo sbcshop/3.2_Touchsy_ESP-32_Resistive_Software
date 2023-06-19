@@ -59,7 +59,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     |---|---|---|---|
     | IO14 | DC/SCL SPI  | _sclk   |Clock pin of SPI interface for Display|
     | IO13 | SDI SPI/SDA | _mosi   | MOSI (Master OUT Slave IN) pin of SPI interface|
-    | IO12 | SDI SPI/SDA | _miso   | MISO (Master IN Slave OUT) data pin of SPI interface|
+    | IO12 | SDO SPI     | _miso   | MISO (Master IN Slave OUT) data pin of SPI interface|
     | IO15 | CS/SPI CS   | TFT_CS  | Chip Select pin of SPI interface|
     | IO21 | WR/SPI D/C  | TFT_DC  | Data/Command pin of SPI interface|
     | EN   | RESET       | TFT_RST | Display Reset pin, Directly connected to enable pin|
