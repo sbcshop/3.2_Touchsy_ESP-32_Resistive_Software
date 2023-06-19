@@ -120,6 +120,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     |---|---|---|
     |IO4 | BT1 |Programmable button|
     |IO6 | BT2 |Programmable button|
+    |IO0 | Boot | Boot Button|
   
     | ESP32 | Hardware |
     |---|---|
