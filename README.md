@@ -55,27 +55,28 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
 
 ### Interfacing Details
 - Display and Resistive Touch controller interfacing with Pico W
-    | Pico W | Display | Code variables | Function |
+    | ESP32 | Display | Code variables | Function |
     |---|---|---|---|
-    |GP6  | DC/SCL SPI | TFT_CLK_PIN  |Clock pin of SPI interface for Display|
-    |GP7  | SDI SPI/SDA | TFT_MOSI_PIN | MOSI (Master OUT Slave IN) pin of SPI interface|
-    |GP13 | CS/SPI CS  | TFT_CS_PIN   | Chip Select pin of SPI interface|
-    |GP11 | WR/SPI D/C | TFT_DC_PIN   | Data/Command pin of SPI interface|
-    |GP14 | RESET | TFT_RST_PIN  | Display Reset pin|
-    |GP15 |Driven via Transistor| BL |Backlight of display|
+    |14 | DC/SCL SPI | TFT_CLK_PIN  |Clock pin of SPI interface for Display|
+    |13  | SDI SPI/SDA | TFT_MOSI_PIN | MOSI (Master OUT Slave IN) pin of SPI interface|
+    |15 | CS/SPI CS  | TFT_CS_PIN   | Chip Select pin of SPI interface|
+    |21 | WR/SPI D/C | TFT_DC_PIN   | Data/Command pin of SPI interface|
+    |EN | RESET | TFT_RST_PIN  | Display Reset pin, Directly connected to enable pin|
+    |5 |Driven via Transistor| BL |Backlight of display|
 
   Display setting code snippets view (config.py):
   ```
-    TFT_CLK_PIN = const(6)
-    TFT_MOSI_PIN = const(7)
-    
-    TFT_CS_PIN = const(13)
-    TFT_RST_PIN = const(14)
-    TFT_DC_PIN = const(11)
-
-    #inside createMyDisplay() method to configure display for SPI interface 
-    spiTFT = SPI(0, baudrate=51200000, sck=Pin(TFT_CLK_PIN), mosi=Pin(TFT_MOSI_PIN))
-    display = Display(spiTFT, dc=Pin(TFT_DC_PIN), cs=Pin(TFT_CS_PIN), rst=Pin(TFT_RST_PIN),rotation=180)
+    //Define SPI interfacing pins for Display with ESP32
+    #define TFT_DC             21
+    #define _sclk              14
+    #define _mosi              13 
+    #define _miso              12
+    #define TFT_CS             15 
+    #define TFT_RST            -1   // connected to enable pin of esp32 
+    #define TFT_BACKLIGHT_PIN   5
+      
+    // pass to function
+    Adafruit_ILI9341 tft = Adafruit_ILI9341( TFT_CS, TFT_DC, TFT_RST );
   ```
   
     | Pico W | Resistive Touch | Code variables | Function |
