@@ -57,43 +57,45 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
 - Display and Resistive Touch controller interfacing with ESP32
     | ESP32 | Display | Code variables | Function |
     |---|---|---|---|
-    |IO14 | DC/SCL SPI | _sclk  |Clock pin of SPI interface for Display|
-    |IO13  | SDI SPI/SDA | _mosi | MOSI (Master OUT Slave IN) pin of SPI interface|
-    |IO15 | CS/SPI CS  | TFT_CS   | Chip Select pin of SPI interface|
-    |IO21 | WR/SPI D/C | TFT_DC   | Data/Command pin of SPI interface|
-    |EN | RESET | TFT_RST  | Display Reset pin, Directly connected to enable pin|
-    |IO5 |Driven via Transistor| TFT_BACKLIGHT_PIN |Backlight of display|
+    | IO14 | DC/SCL SPI  | _sclk   |Clock pin of SPI interface for Display|
+    | IO13 | SDI SPI/SDA | _mosi   | MOSI (Master OUT Slave IN) pin of SPI interface|
+    | IO12 | SDI SPI/SDA | _miso   | MISO (Master IN Slave OUT) data pin of SPI interface|
+    | IO15 | CS/SPI CS   | TFT_CS  | Chip Select pin of SPI interface|
+    | IO21 | WR/SPI D/C  | TFT_DC  | Data/Command pin of SPI interface|
+    | EN   | RESET       | TFT_RST | Display Reset pin, Directly connected to enable pin|
+    | IO5  |Driven via Transistor  | TFT_BACKLIGHT_PIN |Backlight of display|
+
+    | ESP32 | Resistive Touch | Code variables | Function |
+    |---|---|---|---|
+    | IO14 | DCLK   | _sclk         |Clock pin of SPI interface for touch controller|
+    | IO13 | DIN    | _mosi         | MOSI (Master OUT Slave IN) data pin of SPI interface|
+    | IO12 | DOUT   | _miso         | MISO (Master IN Slave OUT) data pin of SPI interface|
+    | IO47 | CS     | TOUCH_CS_PIN  | Chip Select pin of SPI interface|
+    | IO0  | PENIRQ | TOUCH_IRQ_PIN | Touch controller Interrupt pin|
 
   Display setting code snippets view:
   ```
-    //Define SPI interfacing pins for Display with ESP32
-    #define TFT_DC             21
+    //Define common SPI interfacing pins
     #define _sclk              14
     #define _mosi              13 
     #define _miso              12
+    
+    //for Display with ESP32
+    #define TFT_DC             21
     #define TFT_CS             15 
     #define TFT_RST            -1   // connected to enable pin of esp32 
+    
+    //for Touch controller with ESP32
+    #define TOUCH_CS_PIN       47
+    #define TOUCH_IRQ_PIN      0
+    
     #define TFT_BACKLIGHT_PIN   5
-  ```
-  
-    | ESP32 | Resistive Touch | Code variables | Function |
-    |---|---|---|---|
-    | | DCLK | XPT_CLK_PIN  |Clock pin of SPI interface for touch controller|
-    | | DIN | XPT_MOSI_PIN | MOSI (Master OUT Slave IN) data pin of SPI interface|
-    | | DOUT | XPT_MISO_PIN   | MISO (Master IN Slave OUT) data pin of SPI interface|
-    | IO47 | CS | TOUCH_CS_PIN   | Chip Select pin of SPI interface|
-    | IO0 | PENIRQ | TOUCH_IRQ_PIN | Touch controller Interrupt pin|
-  
-#define TFT_MOSI 11
-#define TFT_SCLK 12
-#define TFT_CS   10  // Chip select control pin
-#define TFT_DC   13  // Data Command control pin
-//#define TFT_RST   4  // Reset pin (could connect to RST pin)
-#define TFT_RST  -1  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
-  Touch setting code snippets view:
-  ```
+    // to access various display methods
+    Adafruit_ILI9341 tft = Adafruit_ILI9341( TFT_CS, TFT_DC, TFT_RST );
 
+    // to access resistive touch related method
+    XPT2046_Touchscreen touch( TOUCH_CS_PIN, TOUCH_IRQ_PIN );
   ```
 
 - ESP32 and micro SD card interfacing
@@ -132,13 +134,25 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     const int LED = 3;
   ```
 - Breakout GPIOs
+    Breakout 1
     | ESP32 |Physical Pin | Multi-Function |
     |---|---|---|
-    |GP0 | 1  | General IO / SPI0 RX / I2C0 SDA / UART0 TX |
-    |GP1 | 2 | General IO / SPI0 CSn / I2C0 SCL / UART0 RX |
-    |GP2 | 4 | General IO / SPI0 SCK / I2C1 SDA |
-    |GP3 | 5 | General IO / SPI0 TX / I2C1 SCL |
-    |GP28 | 34 | General IO / ADC2 / SPI1 RX |
+    |D- | 13 | RTC_GPIO19, GPIO19, U1RTS, ADC2_CH8, CLK_OUT2, USB_D- |
+    |D+ | 14 | RTC_GPIO20, GPIO20, U1CTS, ADC2_CH9, CLK_OUT1, USB_D+ |
+    |GP9 | 4 | RTC_GPIO9, GPIO9, TOUCH9, ADC1_CH8, FSPIHD |
+    |GP7 | 5 | RTC_GPIO7, GPIO7, TOUCH7, ADC1_CH6 |
+    |GP46 | 16 | GPIO46 |
+    |GP10 | 18 | RTC_GPIO10, GPIO10, TOUCH10, ADC1_CH9, FSPICS0, FSPIIO4 |
+
+    Breakout 2
+    | ESP32 |Physical Pin | Multi-Function |
+    |---|---|---|
+    |3V3  | 2 | Positive Supply 3.3V |
+    |GP43 | 37 | U0TXD, GPIO43, CLK_OUT1 |
+    |GP44 | 36 | U0RXD, GPIO44, CLK_OUT2 |
+    |GP8  | 12 | RTC_GPIO8, GPIO8, TOUCH8, ADC1_CH7  |
+    |GP16 | 9 | RTC_GPIO16, GPIO16, U0CTS, ADC2_CH5, XTAL_32K_N |
+    |GND  | 1/40/41 | Ground pin |
 
 ### 1. Configure and Setup Development Environment
    - Every Touchsy board will be provided with boot firmware already installed, so you can directly go to step 2.
