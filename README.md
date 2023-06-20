@@ -1,4 +1,4 @@
-![image](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/assets/129948335/a5613438-7a78-4b2a-a0a7-6cd6e2970ce3)# 3.2_Touchsy_ESP-32_Resistive_Software
+# 3.2_Touchsy_ESP-32_Resistive_Software
 <img src="https://github.com/sbcshop/3.2_Touchsy_HAT_Resistive_Software/blob/main/images/Touchsy%20banner.jpg">
 
 Touchsy ESP-32 offers the ideal display solution for users who favor ESP-32 over Raspberry Pi Pico W. With ESP-32, you enjoy the flexibility to program your display using the Arduino platform, making it compatible with a wide range of projects and applications, including IoT and robotics. 
@@ -176,7 +176,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
      
 ### 2. Installing Libraries
    - Download [library zip file](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/libraries.zip) provided here in github.
-   - Extract and copy its files inside Document > Arduino > Library folder
+   - Extract and copy its files inside Document > Arduino > Libraries folder
 
      <img src= "https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/images/library_files.png" />
      
