@@ -183,13 +183,14 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
 ### 3. Testing First Code
    - At this step you are all set to test codes, for easy getting started we have provided various demo [example codes](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/tree/main/examples) in github which you can download and try. 
    - Open one example code in Arduino and make sure you have selected correct board with suitable com port, click on upload button to transfer code on ESP32 of Touchsy.
+     <img src="https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/images/upload_process.gif">
    - Checkout other examples below and build your own custom program codes using those references.
 
 ### Example Codes
-   - [Example 1](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/DisplayDemo.py) : Display demo code
-   - [Example 2](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/TouchDemo.py) : Touch demo code
-   - [Example 3](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/ButtonDemo.py) : Button & Buzzer testing with display code
-   - and [Many more...](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/tree/main/examples)
+   - [Example 1](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/examples/displayDemo.ino) : Display demo code
+   - [Example 2](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/examples/touchDemo.ino) : Touch demo code
+   - [Example 3]() : Button & Buzzer testing with display code
+   - and [Many more...](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/tree/main/examples)
 
    Now you are ready to try out your own codes, **_Happy Coding!_**
    
