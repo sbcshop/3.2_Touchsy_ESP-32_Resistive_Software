@@ -176,23 +176,21 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
      
 ### 2. Installing Libraries
    - Download [library zip file](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/libraries.zip) provided here in github.
-   - Extract and copy its files inside Document > Arduino > Libraries folder
+   - Extract and copy files inside Document > Arduino > Libraries folder. Make sure to restart Arduino IDE whenever you update or add any libraries.
 
-     <img src= "https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/images/library_files.png" />
+     <img src= "https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/blob/main/images/library_files_path.png" />
      
 ### 3. Testing First Code
-   - At this step you are all set to try running codes, for easy getting started we have provided various demo [example codes](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/tree/main/examples) in github which you can download and try. 
-   - Open 
+   - At this step you are all set to test codes, for easy getting started we have provided various demo [example codes](https://github.com/sbcshop/3.2_Touchsy_ESP-32_Resistive_Software/tree/main/examples) in github which you can download and try. 
+   - Open one example code in Arduino and make sure you have selected correct board with suitable com port, click on upload button to transfer code on ESP32 of Touchsy.
+   - Checkout other examples below and build your own custom program codes using those references.
 
 ### Example Codes
-   Save whatever example code file you want to try as main.py in pico w as shown in above [step 3](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software#3-how-to-move-your-script-on-pico-w-of-touchsy), also add related lib files with default name.
    - [Example 1](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/DisplayDemo.py) : Display demo code
    - [Example 2](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/TouchDemo.py) : Touch demo code
    - [Example 3](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/ButtonDemo.py) : Button & Buzzer testing with display code
-   - [Example 4](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/demo_SDcard.py) : How to use sdcard for data write operation
-   - [Example 5](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/blob/main/examples/colorWheel.py) : Animation colorWheel demo
    - and [Many more...](https://github.com/sbcshop/3.2_Touchsy_Pico_W_Resistive_Software/tree/main/examples)
-   
+
    Now you are ready to try out your own codes, **_Happy Coding!_**
    
 ## Resources
