@@ -1,8 +1,7 @@
-#include "Adafruit_GFX.h"
-#include "Adafruit_ILI9341.h"
-#include <XPT2046_Touchscreen.h> 
+#include "Adafruit_GFX.h" // library for Graphics use
+#include "Adafruit_ILI9341.h"  // Display controller library
+#include <XPT2046_Touchscreen.h> // Touch Controller library
 #include <SPI.h>
-
 
 //Define common SPI interfacing pins 
 #define _sclk              14
@@ -12,7 +11,7 @@
 //for Display with ESP32
 #define TFT_DC             21
 #define TFT_CS             15 
-#define TFT_RST            -1   // connected to enable pin of esp32 
+#define TFT_RST            -1   // connected to enable pin of esp32 so keep this -1
 
 //for Touch controller with ESP32
 #define TOUCH_CS_PIN       47
@@ -37,14 +36,14 @@ void setup(void) {
   SPI.begin( _sclk, _miso, _mosi );
   SPI.setFrequency( 60000000 );
 
-  tft.begin();
-  tft.setRotation( TFT_ORIENTATION );
+  tft.begin(); // initialize display
+  tft.setRotation( TFT_ORIENTATION ); // Set display rotation if Needed
 
   tft.fillScreen( ILI9341_BLACK );
   tft.setTextColor( ILI9341_GREEN, ILI9341_BLACK );
 
-  touch.begin();
-  touch.setRotation(1);
+  touch.begin(); // initialize touch
+  touch.setRotation(1); // Set touch rotation to match display
   tft.setTextSize(2);
   tft.println( "Touch Screen Demo...Ready!" );
   tft.setTextColor( ILI9341_YELLOW, ILI9341_BLACK );
@@ -53,14 +52,15 @@ void setup(void) {
 
 TS_Point rawLocation;
 void loop() {
-  if ( touch.touched() ){
+  if ( touch.touched() ){ // detect for any Touch
     tft.fillScreen(ILI9341_BLACK);
     tft.drawRect(0, 0, 320, 240, ILI9341_PURPLE);
   }
 
-  while (touch.touched())
+  while (touch.touched()) // perform operation till screen is touched
       {
-          rawLocation = touch.getPoint();
+          // get co-ordinates by mapping to resolution
+          rawLocation = touch.getPoint();  
           int   a = map(rawLocation.x, 240, 3790, 0, tft.height());
           int   b = map(rawLocation.y, 145, 3870, 0, tft.width()); 
           if ( TFT_ORIENTATION == TFT_UPSIDEDOWN )
