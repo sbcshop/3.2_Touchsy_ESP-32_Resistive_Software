@@ -64,7 +64,7 @@ Here are the features and specifications that make Touchsy ESP-32 a unique and m
     | IO15 | CS/SPI CS   | TFT_CS  | Chip Select pin of SPI interface|
     | IO21 | WR/SPI D/C  | TFT_DC  | Data/Command pin of SPI interface|
     | EN   | RESET       | TFT_RST | Display Reset pin, Directly connected to enable pin|
-    | IO5  |Driven via Transistor  | BACK_LIGHT |Backlight of display|
+    | IO5  |Driven via Transistor  | TFT_BACKLIGHT_PIN |Backlight of display|
 
     | ESP32 | Resistive Touch | Code variables | Function |
     |---|---|---|---|
