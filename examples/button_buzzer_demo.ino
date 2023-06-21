@@ -24,7 +24,6 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341( TFT_CS, TFT_DC, TFT_RST );
 const int buzzerPin = 40; //create variable for buzzer pin connected at GPIO40
 const int userButton1 = 4; //for programmable button 1 at GPIO4
 const int userButton2 = 6; //for programmable button 2 at GPIO6
-const int bootButton = 0; // Boot Button at GPIO0
 const int LED = 3;
 
 void beep(int note, int duration){
@@ -36,7 +35,6 @@ void setup(void) {
   Serial.begin(115200);
   pinMode(userButton1, INPUT_PULLUP); // programmable buttons need pullup
   pinMode(userButton2, INPUT_PULLUP); // programmable buttons need pullup
-  pinMode(bootButton, INPUT); // set mode without pullup for boot button
   
   pinMode(buzzerPin, OUTPUT);
   pinMode(LED, OUTPUT);
@@ -80,19 +78,6 @@ void loop() {
     tft.setTextColor(ILI9341_YELLOW, ILI9341_BLACK);  
     tft.setFont(&FreeSerifBold12pt7b);
     tft.print( "BT2" );
-    delay(50);
-    beep(1760, 500);
-  }
-
-  if (digitalRead(bootButton)==0){
-    digitalWrite(LED, HIGH);
-    tft.fillScreen(ILI9341_BLACK);
-    tft.drawRect(0, 0, 320, 240, ILI9341_YELLOW);
-    Serial.println("Boot Button Pressed!");
-    tft.setCursor( 100, 160 );
-    tft.setTextColor(ILI9341_YELLOW, ILI9341_BLACK);  
-    tft.setFont(&FreeSerifBold12pt7b);
-    tft.print( "Boot Button" );
     delay(50);
     beep(1760, 500);
   }
